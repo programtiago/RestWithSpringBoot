@@ -24,12 +24,17 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.12.1'
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'net.sf.dozer', name: 'dozer', version: '5.5.1'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 	runtimeOnly 'mysql:mysql-connector-java'
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
+	implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.4.2'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 }
 
 test {

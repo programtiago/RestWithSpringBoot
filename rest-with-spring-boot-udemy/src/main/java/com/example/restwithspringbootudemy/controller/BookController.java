@@ -1,54 +1,50 @@
 package com.example.restwithspringbootudemy.controller;
 
-import com.example.restwithspringbootudemy.data.model.Person;
-import com.example.restwithspringbootudemy.service.PersonService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.example.restwithspringbootudemy.data.model.Book;
+import com.example.restwithspringbootudemy.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api(value = "Person Endpoint", tags = {"PersonEndpoint"})
 @RestController
-@RequestMapping(value = "/api/person/v1")
-public class PersonController {
+@RequestMapping(value = "/api/book/v1")
+public class BookController {
 
     @Autowired
-    private PersonService personService;
+    private BookService service;
 
     @GetMapping(value = "/{id}", produces = { "application/json", "application/xml"})
-    public Person findById(@PathVariable("id") Long id)
+    public Book findById(@PathVariable("id") Long id)
     {
-        return personService.findById(id);
+        return service.findById(id);
     }
 
-    @ApiOperation(value = "Find all people recorded")
     @GetMapping(produces = { "application/json", "application/xml"})
-    public List<Person> findAll()
+    public List<Book> findAll()
     {
-        return personService.findAll();
+        return service.findAll();
     }
 
     @PostMapping(produces = { "application/json", "application/xml"},
     consumes  = { "application/json", "application/xml"})
-    public Person create(@RequestBody Person person)
+    public Book create(@RequestBody Book book)
     {
-        return personService.create(person);
+        return service.create(book);
     }
 
     @PutMapping(produces = { "application/json", "application/xml"},
             consumes  = { "application/json", "application/xml"})
-    public Person update(@RequestBody Person p)
+    public Book update(@RequestBody Book b)
     {
-        return personService.update(p);
+        return service.update(b);
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?>delete(@PathVariable("id") Long id)
     {
-        personService.delete(id);
+        service.delete(id);
         return ResponseEntity.ok().build();
     }
 

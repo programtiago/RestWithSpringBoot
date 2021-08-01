@@ -16,6 +16,8 @@ public class RestWithSpringBootUdemyApplication {
 		String result = bCryptPasswordEncoder.encode("admin123");
 
 		 */
+
+
 	}
 
 }

@@ -12,7 +12,7 @@ import java.util.List;
 
 @Api(value = "Person Endpoint", tags = {"PersonEndpoint"})
 @RestController
-@RequestMapping(value = "/api/person/v1")
+@RequestMapping(value = "api/person/v1")
 public class PersonController {
 
     @Autowired

@@ -3,6 +3,7 @@ package com.example.restwithspringbootudemy.controller;
 import com.example.restwithspringbootudemy.repository.UserRepository;
 import com.example.restwithspringbootudemy.security.AccountCredentialsVO;
 import com.example.restwithspringbootudemy.security.jwt.JwtTokenProvider;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,6 +34,7 @@ public class AuthController {
     @Autowired
     UserRepository userRepository;
 
+    @ApiOperation(value = "Authenticates a user and returns a token")
     @PostMapping(value = "/signin", produces = { "application/json", "application/xml"},
             consumes  = { "application/json", "application/xml"})
     public ResponseEntity signin(@RequestBody AccountCredentialsVO data) {
@@ -48,7 +50,7 @@ public class AuthController {
             var token = "";
 
             if (user != null) {
-                jwtTokenProvider.createToken(username, user.getRoles());
+                token = jwtTokenProvider.createToken(username, user.getRoles());
             } else {
                 throw new UsernameNotFoundException(" Username " + username + " not found ! ");
             }
